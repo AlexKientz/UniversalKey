@@ -1,0 +1,8 @@
+name: Claude
+version: 1.0
+author: Harrysto
+main: fr.harrysto.claude.main
+commands:
+  vkey:
+    permission: vkey.claude.use
+    description: Commandes du plugin Claude
