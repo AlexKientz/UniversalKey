@@ -5,4 +5,9 @@ main: fr.harrysto.claude.main
 commands:
   vkey:
     permission: vkey.claude.use
-    description: Commandes du plugin Claude
+    description: Commandes du plugin
+  vkeylist:
+    permission: vkeylist.claude.use
+    description: Voir toute les clé en circulation
+  keymenu:
+    description: Voir votre trouseau de clé
