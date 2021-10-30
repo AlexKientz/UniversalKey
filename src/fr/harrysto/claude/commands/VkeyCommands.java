@@ -25,7 +25,7 @@ public class VkeyCommands implements CommandExecutor {
                 player.sendMessage("[Valient] Votre clé " + keyname + " a été générée !");
                 ItemStack vkey = new ItemStack(Material.TRIPWIRE_HOOK, 1);
                 ItemMeta vk = vkey.getItemMeta();
-                vk.setDisplayName("§4Key");
+                vk.setDisplayName("§4Key not defined");
                 vk.setLore(Arrays.asList("Clé " + keyname));
                 vkey.setItemMeta(vk);
                 player.getInventory().setItemInOffHand(vkey);

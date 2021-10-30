@@ -1,7 +1,7 @@
 name: Claude
 version: 1.0
 author: Harrysto
-main: fr.harrysto.claude.main
+main: fr.harrysto.claude.Main
 commands:
   vkey:
     permission: vkey.claude.use
