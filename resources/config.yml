@@ -1,0 +1,20 @@
+# CONFIG FILE
+
+message:
+  creation-key-no-id: "§e[ValientKey] Votre clé a bien été générée !" # Message de création de clé via le /vkey <KeyName>
+  assist-commands-vkey: "§c[ValientKey] /vkey <Nom de clé>" # Message de syntaxe de commande non respecté
+  name-key-not-defined: "§cClé non définie" #Nom de la clé non définie
+
+  error-claim: "§c[ValientKey] Ce bloc a déjà été claim par un joueur." # Cette erreur peut survenir si le joueur essaie de claim un bloc déjà claim
+  valide-key: "§e[ValientKey] Vous avez la bonne clé." # Ce message peut survenir si le joueur clique avec la bonnne clé sur le bon bloc. MESSAGE FACULTATIF
+  no-valide-key: "§c[ValientKey] Vous utilisez actuellement la mauvaise clé. Essayez une autre clé." # Ce message peut survenir si le joueur utilise sa clé sur le mauvais bloc.
+
+  cassed-plugin: "§c[ValientKey] Si tu reçois ce message tu as cassé le plugin !" # Si un joueur casse le plugin il reçevera ce message. Si cela arrive me contactez sur le discord ci-dessous. :)
+
+  bypass-on: "§c[ValientKey] Bypass ON"
+  bypass-off: "§c[ValientKey] Bypass OFF"
+
+
+
+# AUTEUR : Harrysto#3533 / Discord
+# PLUGIN VALIENTRP
