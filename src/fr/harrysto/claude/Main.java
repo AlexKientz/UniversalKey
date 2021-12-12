@@ -5,7 +5,9 @@ import fr.harrysto.claude.commands.VkeyCommands;
 import fr.harrysto.claude.listener.ClaimMenuListener;
 import fr.harrysto.claude.listener.ProtectionListener;
 import fr.harrysto.claude.listener.TransformKey;
+import fr.harrysto.claude.listener.keythief;
 import fr.harrysto.claude.recipe.NewKey;
+import fr.harrysto.claude.recipe.thiefkey;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -32,6 +34,7 @@ public class Main extends JavaPlugin implements Listener {
     public final Logger logger = Logger.getLogger("Minecraft");
 
     private NewKey recipeNewKey;
+    private thiefkey recipeKeyThief;
 
 
     public void onEnable() {
@@ -45,6 +48,7 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ProtectionListener(this), this);
         getServer().getPluginManager().registerEvents(new ClaimMenuListener(this), this);
         getServer().getPluginManager().registerEvents(new TransformKey(this), this);
+        getServer().getPluginManager().registerEvents(new keythief(this), this);
 
         // Command
         getCommand("vkey").setExecutor(new VkeyCommands(this));
@@ -53,6 +57,9 @@ public class Main extends JavaPlugin implements Listener {
         // Recipe
         this.recipeNewKey = new NewKey(this);
         this.getServer().addRecipe(this.recipeNewKey.addRecipeNewKey());
+
+        this.recipeKeyThief = new thiefkey(this);
+        this.getServer().addRecipe(this.recipeKeyThief.addRecipeThiefKey());
 
         // Message
         PluginDescriptionFile pdfFile = this.getDescription();

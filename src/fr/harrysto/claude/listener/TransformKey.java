@@ -37,17 +37,18 @@ public class TransformKey implements Listener {
             KeyID = item.getItemMeta().getDisplayName();
         }
 
-        if(player.hasPermission("forgeron.valient.use")) {
-            if (item.getType() == Material.NAME_TAG && cle != null) {
+        if (item.getType() == Material.NAME_TAG && cle != null) {
+            if(player.hasPermission("forgeron.valient.use")) {
                 player.sendMessage("§e[ValientKey] Prend désormais une clé vierge et fait clic droit dans l'air.");
                 player.getItemInHand().setAmount(0);
+            } else {
+                player.sendMessage(plugin.getConfig().getString("message.no-forgeron-permission"));
             }
-        } else {
-            player.sendMessage("§c[ValientKey] Tu n'es pas forgeron !");
         }
 
-        if(player.hasPermission("forgeron.valient.use")){
-            if(item.getType() == Material.BONE && event.getAction() == Action.RIGHT_CLICK_AIR){
+
+        if(item.getType() == Material.BONE && event.getAction() == Action.RIGHT_CLICK_AIR) {
+            if (player.hasPermission("forgeron.valient.use")) {
                 ItemStack vkey = new ItemStack(Material.BLAZE_ROD, 1);
                 ItemMeta vk = vkey.getItemMeta();
                 vk.setDisplayName(KeyID);
@@ -55,12 +56,9 @@ public class TransformKey implements Listener {
                 vkey.setItemMeta(vk);
                 player.getInventory().setItemInMainHand(vkey);
                 player.updateInventory();
-
+            } else{
+                player.sendMessage(plugin.getConfig().getString("message.no-forgeron-permission"));
             }
-        } else {
-            player.sendMessage("§c[ValientKey] Tu n'es pas forgeron !");
         }
-
-
     }
 }

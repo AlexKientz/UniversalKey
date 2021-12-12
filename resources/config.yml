@@ -14,6 +14,9 @@ message:
   bypass-on: "§c[ValientKey] Bypass ON"
   bypass-off: "§c[ValientKey] Bypass OFF"
 
+  no-forgeron-permission: "§c[ValientKey] Il faut être forgeron pour faire ceci." # Message si non forgeron
+
+
 
 
 # AUTEUR : Harrysto#3533 / Discord
