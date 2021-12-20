@@ -7,7 +7,6 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
-import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.block.BlockBreakEvent;
@@ -18,7 +17,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
-import java.util.Objects;
 
 public class ProtectionListener implements Listener {
 
@@ -30,6 +28,9 @@ public class ProtectionListener implements Listener {
 
     String loc = "";
     int coordinates;
+
+    String NewID = "";
+    String SubID = "";
 
     @EventHandler
     public void onPlayerInteract(PlayerInteractEvent event) {
@@ -48,18 +49,19 @@ public class ProtectionListener implements Listener {
         }
 
         if(event.getClickedBlock() != null) {
-            coordinates = event.getClickedBlock().getX() + event.getClickedBlock().getY() + event.getClickedBlock().getZ();
-        }
-
-        if(event.getClickedBlock() != null) {
+            int Y = event.getClickedBlock().getY() - 1;
+            NewID = event.getClickedBlock().getX() + "," + event.getClickedBlock().getY() + "," + event.getClickedBlock().getZ();
+            SubID = event.getClickedBlock().getX() + "," + Y + "," + event.getClickedBlock().getZ();
             loc = event.getClickedBlock().getLocation().toString();
         }
 
         // File CONFIG
         final File file = new File(plugin.getDataFolder(), "data.yml");
         final YamlConfiguration configuration = YamlConfiguration.loadConfiguration(file);
-        final String key = "zone." + "§c" + coordinates;
+        final String key = "zone." + "§c" + NewID;
+        final String SubKey = "zone." + "§c" + SubID;
         final ConfigurationSection configurationSection = configuration.getConfigurationSection(key);
+        final ConfigurationSection configurationSection1 = configuration.getConfigurationSection(SubKey);
         try {
             configuration.save(file);
         } catch (IOException e) {
@@ -72,39 +74,53 @@ public class ProtectionListener implements Listener {
             loc2 = configurationSection.getString("loc");
         }
 
+        String SubLoc1 = SubID;
+        String SubLoc2 = "";
+
+        if(configurationSection1 != null){
+            SubLoc2 = configurationSection1.getString("loc");
+        }
+
         String key3 = null;
         if(configurationSection != null) {
             key3 = configurationSection.getString("id");
         }
         String key2 = cle;
 
-        if (item.getType() == Material.BONE && event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-                if(configurationSection == null && item.getType() == Material.BONE) {
-                // Give key + id
-                player.getItemInHand().setAmount(0);
+        if (item.getType() == Material.BONE && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && item.getItemMeta().getDisplayName().equalsIgnoreCase("§cClé non définie")) {
+                if (configurationSection == null && item.getType() == Material.BONE) {
+                    // Give key + id
+                    player.getItemInHand().setAmount(0);
 
-                ItemStack vkey = new ItemStack(Material.BLAZE_ROD, 1);
-                ItemMeta vk = vkey.getItemMeta();
-                vk.setDisplayName("§c" + coordinates);
-                vk.setLore(Arrays.asList("Clé de " + event.getPlayer().getPlayerListName()));
-                vkey.setItemMeta(vk);
-                player.getInventory().setItemInMainHand(vkey);
-                player.updateInventory();
-                // Add in Configuration File
-                configuration.set(key + ".loc", event.getClickedBlock().getLocation().toString());
-                configuration.set(key + ".id", "§c" + coordinates);
-                configuration.set(key + ".player", player.getDisplayName());
-                configuration.set(key + ".x", event.getClickedBlock().getX());
-                configuration.set(key + ".y", event.getClickedBlock().getY());
-                configuration.set(key + ".z", event.getClickedBlock().getZ());
+                    ItemStack vkey = new ItemStack(Material.BLAZE_ROD, 1);
+                    ItemMeta vk = vkey.getItemMeta();
+                    vk.setDisplayName("§c" + NewID);
+                    vk.setLore(Arrays.asList("Clé de " + event.getPlayer().getPlayerListName()));
+                    vkey.setItemMeta(vk);
+                    player.getInventory().setItemInMainHand(vkey);
+                    player.updateInventory();
+                    // Add in Configuration File
+                    configuration.set(key + ".loc", event.getClickedBlock().getLocation().toString());
+                    configuration.set(key + ".id", "§c" + NewID);
+                    configuration.set(key + ".player", player.getDisplayName());
+                    configuration.set(key + ".x", event.getClickedBlock().getX());
+                    configuration.set(key + ".y", event.getClickedBlock().getY());
+                    configuration.set(key + ".z", event.getClickedBlock().getZ());
 
-                event.setCancelled(true);
-                try {
-                    configuration.save(file);
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
+                    // Claim Y -1
+                    configuration.set(SubKey + ".id", "§c" + SubID);
+                    configuration.set(SubKey + ".player", player.getDisplayName());
+                    configuration.set(SubKey + ".x", event.getClickedBlock().getX());
+                    configuration.set(SubKey + ".y", event.getClickedBlock().getY() - 1);
+                    configuration.set(SubKey + ".z", event.getClickedBlock().getZ());
+
+                    event.setCancelled(true);
+                    try {
+                        configuration.save(file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
                     player.sendMessage(plugin.getConfig().getString("message.error-claim"));
                 }
         }
@@ -121,19 +137,30 @@ public class ProtectionListener implements Listener {
             }
         }
 
-        // Bloquez
         if(VkeyCommandAdmin.bypass !=1) {
-            if (event.getAction() == Action.RIGHT_CLICK_BLOCK && item.getType() != Material.BLAZE_ROD) {
-                if (loc1.equals(loc2)) {
+            if (item.getType() == Material.BLAZE_ROD && event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+                if (SubLoc1.equals(SubLoc2) && key3.equals(key2)) {
+                    player.sendMessage(plugin.getConfig().getString("message.valide-key"));
+                } else {
+                    player.sendMessage(plugin.getConfig().getString("message.no-valide-key"));
                     event.setCancelled(true);
                 }
 
             }
         }
 
+        // Bloquez
         if(VkeyCommandAdmin.bypass !=1) {
             if (event.getAction() == Action.RIGHT_CLICK_BLOCK && item.getType() != Material.BLAZE_ROD) {
                 if (loc1.equals(loc2)) {
+                    event.setCancelled(true);
+                }
+            }
+        }
+
+        if(VkeyCommandAdmin.bypass !=1) {
+            if (event.getAction() == Action.RIGHT_CLICK_BLOCK && item.getType() != Material.BLAZE_ROD) {
+                if (SubLoc1.equals(SubLoc2)) {
                     event.setCancelled(true);
                 }
             }
@@ -149,7 +176,7 @@ public class ProtectionListener implements Listener {
         // File
         final File file = new File(plugin.getDataFolder(), "data.yml");
         final YamlConfiguration configuration = YamlConfiguration.loadConfiguration(file);
-        final String key = "zone." + coordinates;
+        final String key = "zone." + NewID;
         final ConfigurationSection configurationSection = configuration.getConfigurationSection(key);
 
         // Variable Location

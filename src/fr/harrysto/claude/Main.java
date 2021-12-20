@@ -2,24 +2,15 @@ package fr.harrysto.claude;
 
 import fr.harrysto.claude.commands.VkeyCommandAdmin;
 import fr.harrysto.claude.commands.VkeyCommands;
-import fr.harrysto.claude.listener.ClaimMenuListener;
-import fr.harrysto.claude.listener.ProtectionListener;
-import fr.harrysto.claude.listener.TransformKey;
-import fr.harrysto.claude.listener.keythief;
+import fr.harrysto.claude.listener.*;
 import fr.harrysto.claude.recipe.NewKey;
 import fr.harrysto.claude.recipe.thiefkey;
 import org.bukkit.Bukkit;
-import org.bukkit.Material;
-import org.bukkit.NamespacedKey;
-import org.bukkit.configuration.InvalidConfigurationException;
-import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
-import org.bukkit.inventory.ItemStack;
-import org.bukkit.inventory.ShapedRecipe;
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.java.JavaPlugin;
 
@@ -49,6 +40,7 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new ClaimMenuListener(this), this);
         getServer().getPluginManager().registerEvents(new TransformKey(this), this);
         getServer().getPluginManager().registerEvents(new keythief(this), this);
+        getServer().getPluginManager().registerEvents(new CheckID(this), this);
 
         // Command
         getCommand("vkey").setExecutor(new VkeyCommands(this));

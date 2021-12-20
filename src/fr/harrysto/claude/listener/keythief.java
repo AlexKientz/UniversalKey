@@ -42,4 +42,17 @@ public class keythief implements Listener {
             p.openInventory(((Player) clicked).getInventory());
         }
     }
+
+    public void onClick(InventoryClickEvent event){
+        Player player = (Player) event.getWhoClicked();
+        Inventory inv = event.getInventory();
+        ItemStack current = event.getCurrentItem();
+        if(current == null) return;
+
+        if(inv.getName().equalsIgnoreCase(ClaimMenuListener.cle)){
+            if(current.getType() != Material.BLAZE_ROD) {
+                event.setCancelled(true);
+            }
+        }
+    }
 }

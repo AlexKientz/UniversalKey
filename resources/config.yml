@@ -11,13 +11,16 @@ message:
 
   cassed-plugin: "§c[ValientKey] Si tu reçois ce message tu as cassé le plugin !" # Si un joueur casse le plugin il reçevera ce message. Si cela arrive me contactez sur le discord ci-dessous. :)
 
-  bypass-on: "§c[ValientKey] Bypass ON"
-  bypass-off: "§c[ValientKey] Bypass OFF"
+  admin-on: "§c[ValientKey] Commande ON"
+  admin-off: "§c[ValientKey] Commande OFF"
 
   no-forgeron-permission: "§c[ValientKey] Il faut être forgeron pour faire ceci." # Message si non forgeron
 
+  vkey-not-name: "§c[ValientKey] Il faut spécifier un nom de clé [/vkeyname <name>]."
 
+  no-correct-player: "§c[ValientKey] Vous n'avez pas accès a la gestion du claim."
 
+  syntax-error: "§c[ValientKey] Erreur de syntaxe [/vkeyspecialkey <X> <Y> <Z> <Name> <option>"
 
 # AUTEUR : Harrysto#3533 / Discord
 # PLUGIN VALIENTRP

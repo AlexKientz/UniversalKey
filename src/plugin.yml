@@ -5,7 +5,10 @@ main: fr.harrysto.claude.Main
 commands:
   vkey:
     permission: vkey.use
-    description: Générateur de clé '/vkey <name>'
+    description: Commande de génération de clé.
   vkeyadmin:
     permission: vkeyadmin.use
-    description: Commande admin de Valient Key
+    description: Commande administrateur du plugin.
+  vkeyname:
+    description: Définir le nom de votre clé.
+    permission: vkeyname.use
