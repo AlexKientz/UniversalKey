@@ -9,6 +9,6 @@ commands:
   vkeyadmin:
     permission: vkeyadmin.use
     description: Commande administrateur du plugin.
-  vkeyname:
-    description: Définir le nom de votre clé.
-    permission: vkeyname.use
+  vkeyspecial:
+    permission: vkeyspecial.use
+    description: Commande création de clé spéciale.

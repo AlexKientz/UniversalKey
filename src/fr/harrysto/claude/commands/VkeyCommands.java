@@ -42,7 +42,7 @@ public class VkeyCommands implements CommandExecutor {
 
                 player.sendMessage(plugin.getConfig().getString("message.creation-key-no-id"));
 
-                ItemStack vkey = new ItemStack(Material.BONE ,1);
+                ItemStack vkey = new ItemStack(Material.valueOf("VALIENT_KEY_ITEM") ,1);
 
 
                 ItemMeta vk = vkey.getItemMeta();

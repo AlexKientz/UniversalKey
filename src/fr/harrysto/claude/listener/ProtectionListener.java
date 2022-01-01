@@ -74,25 +74,18 @@ public class ProtectionListener implements Listener {
             loc2 = configurationSection.getString("loc");
         }
 
-        String SubLoc1 = SubID;
-        String SubLoc2 = "";
-
-        if(configurationSection1 != null){
-            SubLoc2 = configurationSection1.getString("loc");
-        }
-
         String key3 = null;
         if(configurationSection != null) {
             key3 = configurationSection.getString("id");
         }
         String key2 = cle;
 
-        if (item.getType() == Material.BONE && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && item.getItemMeta().getDisplayName().equalsIgnoreCase("§cClé non définie")) {
-                if (configurationSection == null && item.getType() == Material.BONE) {
+        if (item.getType() == Material.valueOf("VALIENT_KEY_ITEM") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && item.getItemMeta().getDisplayName().equalsIgnoreCase("§cClé non définie")) {
+                if (configurationSection == null && item.getType() == Material.valueOf("VALIENT_KEY_ITEM")) {
                     // Give key + id
                     player.getItemInHand().setAmount(0);
 
-                    ItemStack vkey = new ItemStack(Material.BLAZE_ROD, 1);
+                    ItemStack vkey = new ItemStack(Material.valueOf("VALIENT_KEY_ITEM"), 1);
                     ItemMeta vk = vkey.getItemMeta();
                     vk.setDisplayName("§c" + NewID);
                     vk.setLore(Arrays.asList("Clé de " + event.getPlayer().getPlayerListName()));
@@ -107,13 +100,6 @@ public class ProtectionListener implements Listener {
                     configuration.set(key + ".y", event.getClickedBlock().getY());
                     configuration.set(key + ".z", event.getClickedBlock().getZ());
 
-                    // Claim Y -1
-                    configuration.set(SubKey + ".id", "§c" + SubID);
-                    configuration.set(SubKey + ".player", player.getDisplayName());
-                    configuration.set(SubKey + ".x", event.getClickedBlock().getX());
-                    configuration.set(SubKey + ".y", event.getClickedBlock().getY() - 1);
-                    configuration.set(SubKey + ".z", event.getClickedBlock().getZ());
-
                     event.setCancelled(true);
                     try {
                         configuration.save(file);
@@ -126,7 +112,7 @@ public class ProtectionListener implements Listener {
         }
 
         if(VkeyCommandAdmin.bypass !=1) {
-            if (item.getType() == Material.BLAZE_ROD && event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            if (item.getType() == Material.valueOf("VALIENT_KEY_ITEM") || item.getType() == Material.valueOf("VALIENT_SPECIALKEY_ITEM") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                 if (loc1.equals(loc2) && key3.equals(key2)) {
                     player.sendMessage(plugin.getConfig().getString("message.valide-key"));
                 } else {
@@ -137,31 +123,13 @@ public class ProtectionListener implements Listener {
             }
         }
 
-        if(VkeyCommandAdmin.bypass !=1) {
-            if (item.getType() == Material.BLAZE_ROD && event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
-                if (SubLoc1.equals(SubLoc2) && key3.equals(key2)) {
-                    player.sendMessage(plugin.getConfig().getString("message.valide-key"));
+        if(VkeyCommandAdmin.bypass != 1){
+            if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
+                if (item.getType() == Material.valueOf("VALIENT_KEY_ITEM") || item.getType() == Material.valueOf("VALIENT_SPECIALKEY_ITEM")) {
                 } else {
-                    player.sendMessage(plugin.getConfig().getString("message.no-valide-key"));
-                    event.setCancelled(true);
-                }
-
-            }
-        }
-
-        // Bloquez
-        if(VkeyCommandAdmin.bypass !=1) {
-            if (event.getAction() == Action.RIGHT_CLICK_BLOCK && item.getType() != Material.BLAZE_ROD) {
-                if (loc1.equals(loc2)) {
-                    event.setCancelled(true);
-                }
-            }
-        }
-
-        if(VkeyCommandAdmin.bypass !=1) {
-            if (event.getAction() == Action.RIGHT_CLICK_BLOCK && item.getType() != Material.BLAZE_ROD) {
-                if (SubLoc1.equals(SubLoc2)) {
-                    event.setCancelled(true);
+                    if (loc1.equals(loc2)) {
+                        event.setCancelled(true);
+                    }
                 }
             }
         }

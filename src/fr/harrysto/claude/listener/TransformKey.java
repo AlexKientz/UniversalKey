@@ -33,7 +33,7 @@ public class TransformKey implements Listener {
             cle = item.getItemMeta().getDisplayName();
         }
 
-        if(item.getType() == Material.BLAZE_ROD){
+        if(item.getType() == Material.valueOf("VALIENT_KEY_ITEM")){
             KeyID = item.getItemMeta().getDisplayName();
         }
 
@@ -47,9 +47,9 @@ public class TransformKey implements Listener {
         }
 
 
-        if(item.getType() == Material.BONE && event.getAction() == Action.RIGHT_CLICK_AIR) {
+        if(item.getType() == Material.valueOf("VALIENT_KEY_CREATE") && event.getAction() == Action.RIGHT_CLICK_AIR) {
             if (player.hasPermission("forgeron.valient.use")) {
-                ItemStack vkey = new ItemStack(Material.BLAZE_ROD, 1);
+                ItemStack vkey = new ItemStack(Material.valueOf("VALIENT_KEY_ITEM"), 1);
                 ItemMeta vk = vkey.getItemMeta();
                 vk.setDisplayName(KeyID);
                 vk.setLore(Arrays.asList("Clé de " + event.getPlayer().getPlayerListName()));
