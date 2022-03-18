@@ -80,12 +80,12 @@ public class ProtectionListener implements Listener {
         }
         String key2 = cle;
 
-        if (item.getType() == Material.valueOf("VALIENT_KEY_ITEM") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && item.getItemMeta().getDisplayName().equalsIgnoreCase("§cClé non définie")) {
-                if (configurationSection == null && item.getType() == Material.valueOf("VALIENT_KEY_ITEM")) {
+        if (item.getType() == Material.valueOf("VB_VALIENTKEYS") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && item.getItemMeta().getDisplayName().equalsIgnoreCase("§cClé non définie")) {
+                if (configurationSection == null && item.getType() == Material.valueOf("VB_VALIENTKEYS")) {
                     // Give key + id
                     player.getItemInHand().setAmount(0);
 
-                    ItemStack vkey = new ItemStack(Material.valueOf("VALIENT_KEY_ITEM"), 1);
+                    ItemStack vkey = new ItemStack(Material.valueOf("VB_VALIENTKEYS"), 1);
                     ItemMeta vk = vkey.getItemMeta();
                     vk.setDisplayName("§c" + NewID);
                     vk.setLore(Arrays.asList("Clé de " + event.getPlayer().getPlayerListName()));
@@ -112,7 +112,7 @@ public class ProtectionListener implements Listener {
         }
 
         if(VkeyCommandAdmin.bypass !=1) {
-            if (item.getType() == Material.valueOf("VALIENT_KEY_ITEM") || item.getType() == Material.valueOf("VALIENT_SPECIALKEY_ITEM") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
+            if (item.getType() == Material.valueOf("VB_VALIENTKEYS") || item.getType() == Material.valueOf("VB_VALIENTKEYSPECIAL") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK)) {
                 if (loc1.equals(loc2) && key3.equals(key2)) {
                     player.sendMessage(plugin.getConfig().getString("message.valide-key"));
                 } else {
@@ -125,7 +125,7 @@ public class ProtectionListener implements Listener {
 
         if(VkeyCommandAdmin.bypass != 1){
             if(event.getAction() == Action.RIGHT_CLICK_BLOCK) {
-                if (item.getType() == Material.valueOf("VALIENT_KEY_ITEM") || item.getType() == Material.valueOf("VALIENT_SPECIALKEY_ITEM")) {
+                if (item.getType() == Material.valueOf("VB_VALIENTKEYS") || item.getType() == Material.valueOf("VB_VALIENTKEYSPECIAL")) {
                 } else {
                     if (loc1.equals(loc2)) {
                         event.setCancelled(true);

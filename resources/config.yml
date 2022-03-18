@@ -22,5 +22,13 @@ message:
 
   syntax-error: "§c[ValientKey] Erreur de syntaxe [/vkeyspecialkey <X> <Y> <Z> <Name> <option>"
 
+  no-valide-block : "§c[LockPick] Vous ne pouvez pas intéragir avec ce block."
+
+  no-claim : "§c[LockPick] Il n'existe aucun claim sur ce block."
+
+  lockpick-menu: "§cLockPick"
+
+  valide-lockpick: "§eVous ne pouvez ouvrir la porte."
+
 # AUTEUR : Harrysto#3533 / Discord
 # PLUGIN VALIENTRP

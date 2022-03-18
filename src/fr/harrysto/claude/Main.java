@@ -44,6 +44,10 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new keythief(this), this);
         getServer().getPluginManager().registerEvents(new CheckID(this), this);
 
+        // LOGS
+
+        //getServer().getPluginManager().registerEvents(new LogsKilled(this), this);
+
         // Command
         getCommand("vkey").setExecutor(new VkeyCommands(this));
         getCommand("vkeyadmin").setExecutor(new VkeyCommandAdmin(this));

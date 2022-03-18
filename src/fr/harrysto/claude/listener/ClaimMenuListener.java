@@ -57,7 +57,7 @@ public class ClaimMenuListener implements Listener {
             e.printStackTrace();
         }
 
-        if(item.getType() == Material.valueOf("VALIENT_KEY_ITEM") && event.getAction().equals(Action.RIGHT_CLICK_AIR) && item.getItemMeta().getDisplayName().equalsIgnoreCase(cle)) {
+        if(item.getType() == Material.valueOf("VB_VALIENTKEYS") && event.getAction().equals(Action.RIGHT_CLICK_AIR) && item.getItemMeta().getDisplayName().equalsIgnoreCase(cle)) {
             Inventory ClaimManager = Bukkit.createInventory(null, 27, cle);
 
             // ItemStack

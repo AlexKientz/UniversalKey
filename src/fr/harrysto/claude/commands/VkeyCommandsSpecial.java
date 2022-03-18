@@ -25,7 +25,7 @@ public class VkeyCommandsSpecial implements CommandExecutor {
 
     @Override
     public boolean onCommand(CommandSender sender, Command cmd, String label, String[] args) {
-        if(label.equalsIgnoreCase("vkeyspecial") && sender instanceof Player) {
+        if(label.equalsIgnoreCase("VB_VALIENTKEYSPECIAL") && sender instanceof Player) {
             Player player = (Player) sender;
             if(args.length == 0){
                 player.sendMessage(plugin.getConfig().getString("message.assist-commands-vkey"));
@@ -35,10 +35,11 @@ public class VkeyCommandsSpecial implements CommandExecutor {
                 // Generate ID
 
                 // Generate KEY
+                System.out.println("non");
 
                 player.sendMessage(plugin.getConfig().getString("message.creation-key-no-id"));
 
-                ItemStack vkey = new ItemStack(Material.valueOf("VALIENT_SPECIALKEY_ITEM"),1);
+                ItemStack vkey = new ItemStack(Material.valueOf("VB_VALIENTKEYSPECIAL"),1);
 
 
                 ItemMeta vk = vkey.getItemMeta();

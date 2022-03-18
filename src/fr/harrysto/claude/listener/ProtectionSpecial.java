@@ -78,12 +78,12 @@ public class ProtectionSpecial implements Listener {
             }
             String key2 = cle;
 
-            if (item.getType() == Material.valueOf("VALIENT_SPECIALKEY_ITEM") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && item.getItemMeta().getDisplayName().equalsIgnoreCase("§cClé spécial non définie")) {
-                if (configurationSection == null && item.getType() == Material.valueOf("VALIENT_SPECIALKEY_ITEM")) {
+            if (item.getType() == Material.valueOf("VB_VALIENTKEYSPECIAL") && event.getAction().equals(Action.RIGHT_CLICK_BLOCK) && item.getItemMeta().getDisplayName().equalsIgnoreCase("§cClé spécial non définie")) {
+                if (configurationSection == null && item.getType() == Material.valueOf("VB_VALIENTKEYSPECIAL")) {
                     // Give key + id
                     player.getItemInHand().setAmount(0);
 
-                    ItemStack vkey = new ItemStack(Material.valueOf("VALIENT_SPECIALKEY_ITEM"), 1);
+                    ItemStack vkey = new ItemStack(Material.valueOf("VB_VALIENTKEYSPECIAL"), 1);
                     ItemMeta vk = vkey.getItemMeta();
                     vk.setDisplayName("§c" + NewID);
                     vk.setLore(Arrays.asList("Clé on ne sais pas encore"));
