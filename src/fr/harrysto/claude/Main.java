@@ -29,6 +29,7 @@ public class Main extends JavaPlugin implements Listener {
     private thiefkey recipeKeyThief;
 
 
+
     public void onEnable() {
         // Config
         saveDefaultConfig();
@@ -44,14 +45,10 @@ public class Main extends JavaPlugin implements Listener {
         getServer().getPluginManager().registerEvents(new keythief(this), this);
         getServer().getPluginManager().registerEvents(new CheckID(this), this);
 
-        // LOGS
-
-        //getServer().getPluginManager().registerEvents(new LogsKilled(this), this);
-
         // Command
         getCommand("vkey").setExecutor(new VkeyCommands(this));
         getCommand("vkeyadmin").setExecutor(new VkeyCommandAdmin(this));
-        getCommand("vkeyspecial").setExecutor(new VkeyCommandsSpecial(this));
+        getCommand("vkeyspecdial").setExecutor(new VkeyCommandsSpecial(this));
 
         // Recipe
         this.recipeNewKey = new NewKey(this);
@@ -63,6 +60,8 @@ public class Main extends JavaPlugin implements Listener {
         // Message
         PluginDescriptionFile pdfFile = this.getDescription();
         this.logger.info(pdfFile.getName() + " Version " + pdfFile.getVersion() + " Has Been Enabled !");
+
+        // Mods
     }
 
     public void onDisable() {
