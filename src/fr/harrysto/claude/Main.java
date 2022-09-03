@@ -3,9 +3,10 @@ package fr.harrysto.claude;
 import fr.harrysto.claude.commands.VkeyCommandAdmin;
 import fr.harrysto.claude.commands.VkeyCommands;
 import fr.harrysto.claude.commands.VkeyCommandsSpecial;
+import fr.harrysto.claude.commands.createkey;
 import fr.harrysto.claude.listener.*;
-import fr.harrysto.claude.recipe.NewKey;
-import fr.harrysto.claude.recipe.thiefkey;
+import fr.harrysto.claude.listener.Key;
+
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -25,8 +26,6 @@ public class Main extends JavaPlugin implements Listener {
 
     public final Logger logger = Logger.getLogger("Minecraft");
 
-    private NewKey recipeNewKey;
-    private thiefkey recipeKeyThief;
 
 
 
@@ -38,24 +37,13 @@ public class Main extends JavaPlugin implements Listener {
 
         // Listener
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
-        getServer().getPluginManager().registerEvents(new ProtectionListener(this), this);
-        getServer().getPluginManager().registerEvents(new ProtectionSpecial(this), this);
-        getServer().getPluginManager().registerEvents(new ClaimMenuListener(this), this);
-        getServer().getPluginManager().registerEvents(new TransformKey(this), this);
-        getServer().getPluginManager().registerEvents(new keythief(this), this);
-        getServer().getPluginManager().registerEvents(new CheckID(this), this);
+        getServer().getPluginManager().registerEvents(new Key(this), this);
 
         // Command
-        getCommand("vkey").setExecutor(new VkeyCommands(this));
-        getCommand("vkeyadmin").setExecutor(new VkeyCommandAdmin(this));
-        getCommand("vkeyspecdial").setExecutor(new VkeyCommandsSpecial(this));
-
-        // Recipe
-        this.recipeNewKey = new NewKey(this);
-        this.getServer().addRecipe(this.recipeNewKey.addRecipeNewKey());
-
-        this.recipeKeyThief = new thiefkey(this);
-        this.getServer().addRecipe(this.recipeKeyThief.addRecipeThiefKey());
+        //getCommand("vkey").setExecutor(new VkeyCommands(this));
+        //getCommand("vkeyadmin").setExecutor(new VkeyCommandAdmin(this));
+        //getCommand("vkeyspecdial").setExecutor(new VkeyCommandsSpecial(this));
+        getCommand("createkey").setExecutor(new createkey());
 
         // Message
         PluginDescriptionFile pdfFile = this.getDescription();

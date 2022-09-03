@@ -12,3 +12,5 @@ commands:
   vkeyspecial:
     permission: vkeyspecial.use
     description: Commande création de clé spéciale.
+  createkey:
+    description: Crée une clé

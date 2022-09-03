@@ -1,7 +1,6 @@
 package fr.harrysto.claude.commands;
 
 import fr.harrysto.claude.Main;
-import fr.harrysto.claude.listener.ProtectionListener;
 import javafx.print.PageLayout;
 import org.bukkit.Bukkit;
 import org.bukkit.Material;

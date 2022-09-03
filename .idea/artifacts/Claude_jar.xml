@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
   <artifact name="Claude:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/Claude_jar</output-path>
+    <output-path>$USER_HOME$/Desktop/server/plugins/</output-path>
     <root id="root">
       <element id="archive" name="Claude.jar">
         <element id="module-output" name="Claude" />
