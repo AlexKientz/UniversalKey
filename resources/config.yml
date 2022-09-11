@@ -1,34 +1,12 @@
 # CONFIG FILE
 
 message:
-  creation-key-no-id: "§e[ValientKey] Votre clé a bien été générée !" # Message de création de clé via le /vkey <KeyName>
-  assist-commands-vkey: "§c[ValientKey] /vkey <Nom de clé>" # Message de syntaxe de commande non respecté
-  name-key-not-defined: "§cClé non définie" #Nom de la clé non définie // NE PAS CHANGER !! POUR CHANGER ME CONTACTER !!
+  error-claim: "§c[UniversalKey] Ce block a déjà était claim."
+  valide-claim: "§c[UniversalKey] Votre block a bien était enrengistré."
 
-  error-claim: "§c[ValientKey] Ce bloc a déjà été claim par un joueur." # Cette erreur peut survenir si le joueur essaie de claim un bloc déjà claim
-  valide-key: "§e[ValientKey] Vous avez la bonne clé." # Ce message peut survenir si le joueur clique avec la bonnne clé sur le bon bloc. MESSAGE FACULTATIF
-  no-valide-key: "§c[ValientKey] Vous utilisez actuellement la mauvaise clé. Essayez une autre clé." # Ce message peut survenir si le joueur utilise sa clé sur le mauvais bloc.
-
-  cassed-plugin: "§c[ValientKey] Si tu reçois ce message tu as cassé le plugin !" # Si un joueur casse le plugin il reçevera ce message. Si cela arrive me contactez sur le discord ci-dessous. :)
-
-  admin-on: "§c[ValientKey] Commande ON"
-  admin-off: "§c[ValientKey] Commande OFF"
-
-  no-forgeron-permission: "§c[ValientKey] Il faut être forgeron pour faire ceci." # Message si non forgeron
-
-  vkey-not-name: "§c[ValientKey] Il faut spécifier un nom de clé [/vkeyname <name>]."
-
-  no-correct-player: "§c[ValientKey] Vous n'avez pas accès a la gestion du claim."
-
-  syntax-error: "§c[ValientKey] Erreur de syntaxe [/vkeyspecialkey <X> <Y> <Z> <Name> <option>"
-
-  no-valide-block : "§c[LockPick] Vous ne pouvez pas intéragir avec ce block."
-
-  no-claim : "§c[LockPick] Il n'existe aucun claim sur ce block."
-
-  lockpick-menu: "§cLockPick"
-
-  valide-lockpick: "§eVous ne pouvez ouvrir la porte."
+item:
+  # Name of item
+  key: STICK
 
 # AUTEUR : Harrysto#3533 / Discord
-# PLUGIN VALIENTRP
+# PLUGIN COPYRIGHT @2022 AlexK

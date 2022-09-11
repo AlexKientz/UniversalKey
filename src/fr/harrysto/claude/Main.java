@@ -7,6 +7,7 @@ import fr.harrysto.claude.commands.createkey;
 import fr.harrysto.claude.listener.*;
 import fr.harrysto.claude.listener.Key;
 
+import fr.harrysto.claude.update.Updater;
 import org.bukkit.Bukkit;
 import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.entity.Player;
@@ -39,17 +40,15 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new Key(this), this);
 
-        // Command
-        //getCommand("vkey").setExecutor(new VkeyCommands(this));
-        //getCommand("vkeyadmin").setExecutor(new VkeyCommandAdmin(this));
-        //getCommand("vkeyspecdial").setExecutor(new VkeyCommandsSpecial(this));
         getCommand("createkey").setExecutor(new createkey());
 
         // Message
         PluginDescriptionFile pdfFile = this.getDescription();
         this.logger.info(pdfFile.getName() + " Version " + pdfFile.getVersion() + " Has Been Enabled !");
 
-        // Mods
+        Updater updater = new Updater(this, 80029, getFile(), Updater.UpdateType.DEFAULT, true);
+
+
     }
 
     public void onDisable() {
