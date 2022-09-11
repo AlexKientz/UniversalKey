@@ -28,7 +28,7 @@ public class Main extends JavaPlugin implements Listener {
     public final Logger logger = Logger.getLogger("Minecraft");
 
 
-
+    String version = "0.1";
 
     public void onEnable() {
         // Config
@@ -40,13 +40,13 @@ public class Main extends JavaPlugin implements Listener {
         Bukkit.getServer().getPluginManager().registerEvents(this, this);
         getServer().getPluginManager().registerEvents(new Key(this), this);
 
-        getCommand("createkey").setExecutor(new createkey());
+        getCommand("key").setExecutor(new createkey(this));
 
         // Message
         PluginDescriptionFile pdfFile = this.getDescription();
-        this.logger.info(pdfFile.getName() + " Version " + pdfFile.getVersion() + " Has Been Enabled !");
+        System.out.println("[UniversalKey] Plugin loaded version: " + version);
 
-        Updater updater = new Updater(this, 80029, getFile(), Updater.UpdateType.DEFAULT, true);
+        Updater updater = new Updater(this, 674685, getFile(), Updater.UpdateType.DEFAULT, true);
 
 
     }

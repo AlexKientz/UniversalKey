@@ -52,7 +52,7 @@ public class Key implements Listener {
             }
 
             if(configurationSection == null && itemStack.getType() == Material.valueOf(plugin.getConfig().getString("item.key"))) {
-                event.getPlayer().sendMessage(plugin.getConfig().getString("message.valide-claim"));
+                event.getPlayer().sendMessage(plugin.getConfig().getString("message.claim.valide-claim"));
                 configuration.set(LocationString + ".player", event.getPlayer().getDisplayName());
                 configuration.set(LocationString + ".key", itemStack.getItemMeta().getDisplayName());
                 configuration.set(LocationString + ".loc", location);
@@ -68,7 +68,7 @@ public class Key implements Listener {
                     event.setCancelled(false);
                 } else {
                     event.setCancelled(true);
-                    event.getPlayer().sendMessage(plugin.getConfig().getString("message.error-claim"));
+                    event.getPlayer().sendMessage(plugin.getConfig().getString("message.claim.error-claim"));
                 }
             } else {
                 if(configurationSection != null){

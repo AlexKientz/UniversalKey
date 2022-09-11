@@ -1,8 +1,13 @@
 # CONFIG FILE
 
 message:
-  error-claim: "§c[UniversalKey] Ce block a déjà était claim."
-  valide-claim: "§c[UniversalKey] Votre block a bien était enrengistré."
+  claim:
+    error-claim: "§c[UniversalKey] Ce block a déjà était claim."
+    valide-claim: "§c[UniversalKey] Votre block a bien était enrengistré."
+  commands:
+    key-lore: "§c[UniversalKey] Cette clé ne possède aucune serrure."
+    syntax-error-key: "§c[UniversalKey] Il manque des arguments. /key <player> <name>."
+
 
 item:
   # Name of item

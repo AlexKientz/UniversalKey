@@ -1,5 +1,5 @@
 <component name="ArtifactManager">
-  <artifact name="Claude:jar">
+  <artifact name="UniversalKey:jar">
     <output-path>$USER_HOME$/Desktop/server/plugins/</output-path>
     <root id="root">
       <element id="archive" name="Claude.jar">

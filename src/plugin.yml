@@ -1,16 +1,8 @@
-name: Claude
+name: UniversalKey
 version: 1.0
 author: Harrysto
 main: fr.harrysto.claude.Main
 commands:
-  vkey:
-    permission: vkey.use
-    description: Commande de génération de clé.
-  vkeyadmin:
-    permission: vkeyadmin.use
-    description: Commande administrateur du plugin.
-  vkeyspecial:
-    permission: vkeyspecial.use
-    description: Commande création de clé spéciale.
-  createkey:
-    description: Crée une clé
+  key:
+    permission: key.universalkey.use
+    description: Cette commande vous give une clé.
